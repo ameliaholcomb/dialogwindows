@@ -8,14 +8,14 @@ angular.module('root', [])
 		height: 800,
 		template: 'experiment-dialog.html'
 	};
-}]);
+}])
 
-.directive('dialog', function() {
+.directive('makeDialog', function() {
 	return {
 		restrict: 'E',
 		scope: {
 			model: '='
 		},
-		templateURL: 'dialog.html'
+		templateUrl: 'dialog.html'
 	};
 });

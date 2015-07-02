@@ -1,6 +1,4 @@
 .dialog {
-  width: 200px;     /*Interact with angular? Otherwise, put directly in HTML*/
-  height: 180px;
   resize: both;
   overflow: auto;
   border: 1px black solid;

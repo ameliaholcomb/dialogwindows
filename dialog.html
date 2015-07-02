@@ -1,0 +1,16 @@
+<html>
+
+<link href='dialog.css' rel='stylesheet' type='text/css'/>
+	<body>
+	    <div class='dialog' 
+	    	 style='width: {{model.width}}px; height: {{model.height}}px'
+	    	 ng-hide={{model.minimized}}>
+	        <span id='topbar'> 
+	            <button id='minimize'> _ </button>
+	        </span>
+
+	        {{model.template}}
+
+	    </div>
+	</body>
+</html>
