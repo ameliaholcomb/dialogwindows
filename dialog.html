@@ -4,13 +4,11 @@
 	<body>
 	    <div class='dialog' 
 	    	 style='width: {{model.width}}px; height: {{model.height}}px'
-	    	 ng-hide={{model.minimized}}>
+	    	 ng-hide=model.minimized>
 	        <span id='topbar'> 
-	            <button id='minimize'> _ </button>
+	            <button id='minimize' ng-click='minimize()'> _ </button>
 	        </span>
-
-	        {{model.template}}
-
+	        {{model}}
 	    </div>
 	</body>
 </html>

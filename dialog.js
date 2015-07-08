@@ -16,6 +16,11 @@ angular.module('root', [])
 		scope: {
 			model: '='
 		},
-		templateUrl: 'dialog.html'
+		templateUrl: 'dialog.html',
+		link: function(scope, element, attrs) {
+			scope.minimize = function() {
+				scope.model.minimized = true;
+			};
+		}
 	};
 });
