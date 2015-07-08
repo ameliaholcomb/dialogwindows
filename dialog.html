@@ -3,12 +3,20 @@
 <link href='dialog.css' rel='stylesheet' type='text/css'/>
 	<body>
 	    <div class='dialog' 
-	    	 style='width: {{model.width}}px; height: {{model.height}}px'
-	    	 ng-hide=model.minimized>
+	    	 ng-style="{'width': model.width, 'height': model.height, 'top':model.top, 'left':model.top}"
+	    	 ng-hide=model.minimized>  
 	        <span id='topbar'> 
 	            <button id='minimize' ng-click='minimize()'> _ </button>
 	        </span>
+	        <ng-include src=model.template></ng-include>
 	        {{model}}
 	    </div>
 	</body>
 </html>
+
+
+//Notes:
+//May want to change ng-hide to an ng-switch
+//ng-style may cause problems with:
+	//1. resize and drag interaction
+	//2. px strings in the model

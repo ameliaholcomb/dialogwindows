@@ -2,10 +2,10 @@ angular.module('root', [])
 .controller('index', ['$scope', function($scope) {
 	$scope.experimentDialog = {
 		minimized: true,
-		top: 10,
-		left: 10,
-		width: 600,
-		height: 800,
+		top: '10px',
+		left: '10px',
+		width: '600px',
+		height: '800px',
 		template: 'experiment-dialog.html'
 	};
 }])
