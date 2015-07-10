@@ -1,8 +1,8 @@
 <!DOCTYPE=html>
-<html>
-	<body ng-app='root'>
-		<div ng-controller='index'>
-			<make-dialog model='experimentDialog'></make-dialog>
+<html ng-app='root'>
+	<body ng-controller='index'>
+		<div ng-repeat='dialog in dialogs'>
+			<make-dialog model='dialog'></make-dialog>
 		</div>
 	</body>
 </html>
