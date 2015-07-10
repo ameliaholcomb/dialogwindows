@@ -3,7 +3,7 @@
 <link href='dialog.css' rel='stylesheet' type='text/css'/>
 	<body>
 	    <div class='dialog' 
-	    	 ng-style="{'width': model.width, 'height': model.height, 'top':model.top, 'left':model.top}"
+	    	 ng-style="{'width': model.width+'px', 'height': model.height+'px', 'top':model.top+'px', 'left':model.left+'px'}"
 	    	 ng-hide=model.minimized>  
 	        <span id='topbar'> 
 	            <button id='minimize' ng-click='minimize()'> _ </button>
