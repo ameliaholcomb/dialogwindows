@@ -1,25 +1,44 @@
-(function(angular) {
-  'use strict';
-  
 angular.module('root', [])
   .controller('index', ['$scope', function($scope){
     $scope.dialogs = [
       {
-      minimized: false,
-      width: 200,
-      height: 300,
-      top: 0,
-      left: 0,
-      template: 'experiment-dialog.html'
+        minimized: false,
+        width: 200,
+        height: 300,
+        top: 0,
+        left: 0,
+        zindex: 1,
+        template: 'experiment-dialog.html'
       },
       
       {
         minimized: false,
         width: 200,
         height: 200,
-        top: 300,
-        left: 250,
-        template: 'other-dialog.html'
+        top: 257,
+        left: 238,
+        zindex: 0,
+        template: 'experiment-dialog.html'
+      },
+      
+      {
+        minimized: false,
+        width: 200,
+        height: 200,
+        top: 215,
+        left: 103,
+        zindex: 2,
+        template: 'experiment-dialog.html'
+      },
+      
+      {
+        minimized: false,
+        width: 200,
+        height: 200,
+        top: 80,
+        left: 154,
+        zindex: 3,
+        template: 'experiment-dialog.html'
       }
     ]
   }])
@@ -28,20 +47,33 @@ angular.module('root', [])
 	return {
 		restrict: 'E',
 		scope: {
-			model: '='
+			model: '=',
+			dialogs: '='
 		},
 		templateUrl: 'dialog.html',
 		link: function(scope, element, attrs) {
-		  
-		  //minimization
-		  scope.minimize = function() {
-		    scope.model.minimized = true;
-		  }; 
 		  
 		  //jqlite elements
 		  var dialog = element.find('div');
 		  var topBar = dialog.children().eq(0);
 		  var drag = dialog.children().eq(1);
+		  
+		  //bring to top
+		  scope.zorder = function() {
+		    var k = scope.model.zindex;
+		    var l = scope.dialogs.length;
+		    for(var i = 0; i < l; i++){
+		      if(scope.dialogs[i].zindex > k) {
+		        scope.dialogs[i].zindex -= 1;
+		      } 
+		    }
+		    scope.model.zindex = l-1;
+		  };
+		  
+		  //minimization
+		  scope.minimize = function() {
+		    scope.model.minimized = true;
+		  }; 
 		  
 		  //drag variables
 		  var t = scope.model.top;
@@ -84,7 +116,6 @@ angular.module('root', [])
 		      startX = event.screenX;
 		      $document.on('mousemove', mousemoveSize);
 		      $document.on('mouseup', mouseupSize);
-
 		  });
 		  
 		  function mousemoveSize(event) {
@@ -106,3 +137,5 @@ angular.module('root', [])
 		}
 	};
 });
+
+})

@@ -2,7 +2,7 @@
 <html ng-app='root'>
 	<body ng-controller='index'>
 		<div ng-repeat='dialog in dialogs'>
-			<make-dialog model='dialog'></make-dialog>
+			<make-dialog model='dialog' dialogs='dialogs'></make-dialog>
 		</div>
 	</body>
 </html>
