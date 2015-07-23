@@ -1,10 +1,27 @@
-<!DOCTYPE=html>
-<html ng-app='root'>
-	<body ng-controller='index'>
-		<div ng-repeat='dialog in dialogs'>
-			<make-dialog model='dialog' dialogs='dialogs'></make-dialog>
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
+    <script src="script.js"></script>
+    <link href="index.css" rel="stylesheet" type="text/css"/>
+  </head>
+
+  <body ng-app='root' ng-controller='index'>
+    
+		<ul id='taskbar'>
+		  <button ng-repeat='dialog in dialogs|filter:{minimized:true}' 
+		          ng-click='maximize(dialog)'>
+		      {{dialog.template}}
+		  </button>
+	  </ul>
+		
+		<div id='container'>
+		  <div ng-repeat='dialog in dialogs|filter:{minimized:false}'>
+		    <make-dialog model='dialog' dialogs='dialogs'></make-dialog> 
+		  </div>
 		</div>
+
+
 	</body>
 </html>
-
-

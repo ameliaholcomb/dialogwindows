@@ -5,8 +5,8 @@ angular.module('root', [])
         minimized: false,
         width: 200,
         height: 300,
-        top: 0,
-        left: 0,
+        top: 5,
+        left: 5,
         zindex: 1,
         template: 'experiment-dialog.html'
       },
@@ -14,33 +14,38 @@ angular.module('root', [])
       {
         minimized: false,
         width: 200,
-        height: 200,
+        height: 250,
         top: 257,
         left: 238,
         zindex: 0,
-        template: 'experiment-dialog.html'
+        template: 'other-dialog.html'
       },
       
       {
         minimized: false,
         width: 200,
-        height: 200,
+        height: 250,
         top: 215,
         left: 103,
         zindex: 2,
-        template: 'experiment-dialog.html'
+        template: 'other-dialog.html'
       },
       
       {
         minimized: false,
         width: 200,
-        height: 200,
+        height: 250,
         top: 80,
         left: 154,
         zindex: 3,
-        template: 'experiment-dialog.html'
+        template: 'other-dialog.html'
       }
-    ]
+    ];
+    
+    $scope.maximize = function(dialog, dialogs) {
+      dialog.minimized = false;
+    };
+    
   }])
   
   .directive('makeDialog', function($document) {
@@ -53,13 +58,8 @@ angular.module('root', [])
 		templateUrl: 'dialog.html',
 		link: function(scope, element, attrs) {
 		  
-		  //jqlite elements
-		  var dialog = element.find('div');
-		  var topBar = dialog.children().eq(0);
-		  var drag = dialog.children().eq(1);
-		  
-		  //bring to top
-		  scope.zorder = function() {
+		 //bring to top
+		 scope.zorder = function() {
 		    var k = scope.model.zindex;
 		    var l = scope.dialogs.length;
 		    for(var i = 0; i < l; i++){
@@ -69,6 +69,11 @@ angular.module('root', [])
 		    }
 		    scope.model.zindex = l-1;
 		  };
+		  
+		  //jqlite elements
+		  var dialog = element.find('div');
+		  var topBar = dialog.children().eq(0);
+		  var drag = dialog.children().eq(1);
 		  
 		  //minimization
 		  scope.minimize = function() {
@@ -93,21 +98,22 @@ angular.module('root', [])
 		    l = event.screenX - offsetL;
 		    t = event.screenY - offsetT;
 		    dialog.css({
-            top: t + 'px',
-            left: l + 'px'
+            top: Math.max(0,t) + 'px',
+            left: Math.max(0,l) + 'px'
         });
 		  }
 		  
 		  function mouseupDrag(event) {
 		    $document.off('mousemove', mousemoveDrag);
 		    $document.off('mouseup', mouseupDrag);
-		    scope.model.top = t;
-		    scope.model.left = l;
+		    scope.model.top = Math.max(0,t);
+		    scope.model.left = Math.max(0,l);
 		    scope.$apply();
 		  }
 		  
 		  //resize variables
 		  var h = 0, w = 0, startX = 0, startY = 0;
+		  var minW = 100, minH = 100; //minimium allowable window size
 		  
 		  //resize functions
 		  drag.on('mousedown', function(event) {
@@ -122,20 +128,18 @@ angular.module('root', [])
 		    w = scope.model.width + event.screenX - startX;
 		    h = scope.model.height + event.screenY - startY;
 		    dialog.css({
-		      width: w + 'px',
-		      height: h + 'px'
+		      width: Math.max(w, minW) + 'px',
+		      height: Math.max(h, minH) + 'px'
 		    });
 		  }
 		  
 		  function mouseupSize(event) {
 		    $document.off('mousemove', mousemoveSize);
 		    $document.off('mouseup', mouseupSize);
-		    scope.model.width = w;
-		    scope.model.height = h;
+		    scope.model.width = Math.max(w, minW);
+		    scope.model.height = Math.max(h, minH);
 		    scope.$apply();
 		  }
 		}
 	};
 });
-
-})

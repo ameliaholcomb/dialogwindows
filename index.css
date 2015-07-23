@@ -1,0 +1,24 @@
+#taskbar {
+  position: fixed;
+  width: 100%;
+  list-style-type: none;
+  top:0px;
+  left:0px;
+}
+
+#taskbar button {
+  float: left;
+  background-color: lightgrey;
+}
+
+#taskbar button:hover {
+  background-color: darkgrey;
+}
+
+#container {
+  position: absolute;
+  top: 50px;
+  left: 0px;
+  width: 100%;
+  border-top: lightgrey 1px solid;
+}
