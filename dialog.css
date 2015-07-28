@@ -1,22 +1,22 @@
 .dialog {
-  overflow: auto;
   border: 1px black solid;
   display: block;
-  position: fixed;
+  position: absolute;
   background-color: white;
+  overflow: auto;
 }
 
-#topbar {
+.topbar {
     border: 1px lightgrey solid;
     background-color: grey;
     display: block;
 }
 
-#topbar:hover {
+.topbar:hover {
     cursor: pointer;
 }
 
-#drag {
+.drag {
   height:10px;
   width: 10px;
   display: block;
@@ -25,6 +25,16 @@
   right: 0;
 }
 
-#drag:hover {
+.drag:hover {
   cursor: nwse-resize;
+}
+
+.content {
+  position: absolute;
+  top: 26px; /* under the minimize bar */
+  right: 10px;
+  bottom: 10px; /* above the resize area */
+  left: 10px;
+  overflow: auto;
+  border: dashed gray 1px;
 }

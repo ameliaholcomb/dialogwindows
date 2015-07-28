@@ -44,6 +44,14 @@ angular.module('root', [])
     
     $scope.maximize = function(dialog, dialogs) {
       dialog.minimized = false;
+      var k = dialog.zindex;
+      var l = dialogs.length;
+      for(var i = 0; i < l; i++){
+		      if(dialogs[i].zindex > k) {
+		        dialogs[i].zindex -= 1;
+		      } 
+		    }
+		    dialog.zindex = l-1;
     };
     
   }])
@@ -71,9 +79,9 @@ angular.module('root', [])
 		  };
 		  
 		  //jqlite elements
-		  var dialog = element.find('div');
+		  var dialog = angular.element(element[0].querySelector('.dialog'));
 		  var topBar = dialog.children().eq(0);
-		  var drag = dialog.children().eq(1);
+		  var drag = dialog.children().eq(2);
 		  
 		  //minimization
 		  scope.minimize = function() {

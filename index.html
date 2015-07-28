@@ -11,7 +11,7 @@
     
 		<ul id='taskbar'>
 		  <button ng-repeat='dialog in dialogs|filter:{minimized:true}' 
-		          ng-click='maximize(dialog)'>
+		          ng-click='maximize(dialog, dialogs)'>
 		      {{dialog.template}}
 		  </button>
 	  </ul>
