@@ -1,18 +1,23 @@
+(function(angular) {
+  'use strict';
+  
 angular.module('root', [])
   .controller('index', ['$scope', function($scope){
     $scope.dialogs = [
       {
         minimized: false,
+        maximized: false,
         width: 200,
         height: 300,
-        top: 5,
-        left: 5,
+        top: 30,
+        left: 30,
         zindex: 1,
         template: 'experiment-dialog.html'
       },
       
       {
         minimized: false,
+        maximized: false,
         width: 200,
         height: 250,
         top: 257,
@@ -23,6 +28,7 @@ angular.module('root', [])
       
       {
         minimized: false,
+        maximized: false,
         width: 200,
         height: 250,
         top: 215,
@@ -33,8 +39,9 @@ angular.module('root', [])
       
       {
         minimized: false,
+        maximized: false,
         width: 200,
-        height: 250,
+        height: 200,
         top: 80,
         left: 154,
         zindex: 3,
@@ -42,7 +49,12 @@ angular.module('root', [])
       }
     ];
     
-    $scope.maximize = function(dialog, dialogs) {
+    $scope.globals = {
+      maxbool: false
+    };
+    
+    //should be in a separate directive?
+    $scope.restore = function(dialog, dialogs) {
       dialog.minimized = false;
       var k = dialog.zindex;
       var l = dialogs.length;
@@ -61,7 +73,8 @@ angular.module('root', [])
 		restrict: 'E',
 		scope: {
 			model: '=',
-			dialogs: '='
+			dialogs: '=',
+			globals: '='
 		},
 		templateUrl: 'dialog.html',
 		link: function(scope, element, attrs) {
@@ -87,6 +100,17 @@ angular.module('root', [])
 		  scope.minimize = function() {
 		    scope.model.minimized = true;
 		  }; 
+		  
+		  //maximization
+		  scope.maximize = function() {
+		    if(scope.model.maximized === false) {
+		      scope.model.maximized = true;
+		      scope.globals.maxbool = true;
+		    } else {
+		      scope.model.maximized = false;
+		      scope.globals.maxbool = false;
+		    }
+		  };
 		  
 		  //drag variables
 		  var t = scope.model.top;
@@ -151,3 +175,6 @@ angular.module('root', [])
 		}
 	};
 });
+
+
+})(window.angular);

@@ -1,11 +1,17 @@
+
 <html>
 
 <link href='dialog.css' rel='stylesheet' type='text/css'/>
 	<body>
-	    <div class='dialog' ng-style="{'width': model.width+'px', 'height': model.height+'px', 'top':model.top+'px', 'left':model.left+'px', 'z-index': model.zindex}" 
+	    <div class='dialog' ng-style="{'width': model.maximized == true ? '100%' : model.width+'px', 
+	                                   'height': model.maximized == true ? '100%' : model.height+'px', 
+	                                   'top': model.maximized == true ? '0px' : model.top+'px', 
+	                                   'left':model.maximized == true ? '0px' : model.left+'px', 
+	                                   'z-index': model.zindex}" 
 	                        ng-mousedown='zorder()'>
 	        <span class='topbar'> 
 	            <button class='minimize' ng-click="minimize()"> _ </button>
+	            <button class='maximize' ng-click="maximize()"> + </button>
 	        </span>
 	        <div class='content'>
 	          <ng-include src=model.template></ng-include>

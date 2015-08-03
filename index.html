@@ -10,18 +10,21 @@
   <body ng-app='root' ng-controller='index'>
     
 		<ul id='taskbar'>
-		  <button ng-repeat='dialog in dialogs|filter:{minimized:true}' 
-		          ng-click='maximize(dialog, dialogs)'>
-		      {{dialog.template}}
-		  </button>
+		  <div ng-repeat='dialog in dialogs'>
+		    <button ng-show='dialog.minimized==true || (globals.maxbool==true && dialog.maximized == false)'
+		            ng-click='restore(dialog, dialogs)'> 
+		            {{dialog.template}} 
+		    </button>
+		  </div>
 	  </ul>
 		
 		<div id='container'>
 		  <div ng-repeat='dialog in dialogs|filter:{minimized:false}'>
-		    <make-dialog model='dialog' dialogs='dialogs'></make-dialog> 
+		    <make-dialog model='dialog' dialogs='dialogs' globals='globals'></make-dialog> 
 		  </div>
 		</div>
 
 
 	</body>
+
 </html>
