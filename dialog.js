@@ -1,5 +1,6 @@
 
-'use strict';
+(function(angular) {
+  'use strict';
   
 angular.module('root', [])
   .controller('index', ['$scope', function($scope){
@@ -9,10 +10,11 @@ angular.module('root', [])
         maximized: false,
         width: 200,
         height: 300,
-        top: 30,
-        left: 30,
+        top: 10,
+        left: 10,
         zindex: 1,
-        template: 'experiment-dialog.html'
+        template: 'experiment-dialog.html',
+        header: 'Experiment Dialog'
       },
       
       {
@@ -20,10 +22,11 @@ angular.module('root', [])
         maximized: false,
         width: 200,
         height: 250,
-        top: 257,
-        left: 238,
+        top: 300,
+        left: 300,
         zindex: 0,
-        template: 'other-dialog.html'
+        template: 'other-dialog.html',
+        header: 'Other Dialog #1'
       },
       
       {
@@ -31,10 +34,11 @@ angular.module('root', [])
         maximized: false,
         width: 200,
         height: 250,
-        top: 215,
-        left: 103,
+        top: 315,
+        left: 73,
         zindex: 2,
-        template: 'other-dialog.html'
+        template: 'other-dialog.html',
+        header: 'Other Dialog #2'
       },
       
       {
@@ -43,9 +47,10 @@ angular.module('root', [])
         width: 200,
         height: 200,
         top: 80,
-        left: 154,
+        left: 234,
         zindex: 3,
-        template: 'other-dialog.html'
+        template: 'other-dialog.html',
+        header: 'Other Dialog #3'
       }
     ];
     
@@ -176,3 +181,4 @@ angular.module('root', [])
 	};
 });
 
+})(window.angular);

@@ -2,7 +2,7 @@
 <html>
 
   <head>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
     <script src="script.js"></script>
     <link href="index.css" rel="stylesheet" type="text/css"/>
   </head>
@@ -13,7 +13,7 @@
 		  <div ng-repeat='dialog in dialogs'>
 		    <button ng-show='dialog.minimized==true || (globals.maxbool==true && dialog.maximized == false)'
 		            ng-click='restore(dialog, dialogs)'> 
-		            {{dialog.template}} 
+		            {{dialog.header}} 
 		    </button>
 		  </div>
 	  </ul>
