@@ -14,10 +14,17 @@ html, body{
     border: 1px lightgrey solid;
     background-color: grey;
     display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .topbar:hover {
     cursor: pointer;
+}
+
+.header {
+  font-weight: bold;
 }
 
 .drag {

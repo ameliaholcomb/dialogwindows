@@ -1,5 +1,5 @@
-(function(angular) {
-  'use strict';
+
+'use strict';
   
 angular.module('root', [])
   .controller('index', ['$scope', function($scope){
@@ -176,5 +176,3 @@ angular.module('root', [])
 	};
 });
 
-
-})(window.angular);
