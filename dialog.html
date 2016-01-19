@@ -10,6 +10,9 @@
 	                                   'z-index': model.zindex}" 
 	                        ng-mousedown='zorder()'>
 	        <span class='topbar'> 
+	            <button class='close' 
+	                    ng-show='model.closeable==true'
+	                    ng-click="close()" > x </button>
 	            <button class='minimize' ng-click="minimize()"> _ </button>
 	            <button class='maximize' ng-click="maximize()"> + </button>
 	            <span class ='header'> {{model.header}} </span>

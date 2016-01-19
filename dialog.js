@@ -8,6 +8,7 @@ angular.module('root', [])
       {
         minimized: false,
         maximized: false,
+        closeable: true,
         width: 200,
         height: 300,
         top: 10,
@@ -20,6 +21,7 @@ angular.module('root', [])
       {
         minimized: false,
         maximized: false,
+        closeable: true,
         width: 200,
         height: 250,
         top: 300,
@@ -32,6 +34,7 @@ angular.module('root', [])
       {
         minimized: false,
         maximized: false,
+        closeable: false,
         width: 200,
         height: 250,
         top: 315,
@@ -44,6 +47,7 @@ angular.module('root', [])
       {
         minimized: false,
         maximized: false,
+        closeable: false,
         width: 200,
         height: 200,
         top: 80,
@@ -114,6 +118,14 @@ angular.module('root', [])
 		    } else {
 		      scope.model.maximized = false;
 		      scope.globals.maxbool = false;
+		    }
+		  };
+		  
+		  //permanent close
+		  scope.close = function() {
+		    var i = scope.dialogs.indexOf(scope.model);
+		    if(i != -1) {
+		      scope.dialogs.splice(i, 1);
 		    }
 		  };
 		  
