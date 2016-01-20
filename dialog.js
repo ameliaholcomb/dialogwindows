@@ -4,11 +4,12 @@
   
 angular.module('root', [])
   .controller('index', ['$scope', function($scope){
+  	//array of dialogs
     $scope.dialogs = [
       {
-        minimized: false,
-        maximized: false,
-        closeable: true,
+        minimized: false,					
+        maximized: false,					
+        closeable: true,					
         width: 200,
         height: 300,
         top: 10,
@@ -59,10 +60,12 @@ angular.module('root', [])
     ];
     
     $scope.globals = {
-      maxbool: false
+      maxbool: false			// at least one dialog currently maximized
     };
     
-    //should be in a separate directive?
+    //reorders dialogs according to zindex
+    //to be called from outside make-dialog directive
+    		// ** should be own directive?
     $scope.restore = function(dialog, dialogs) {
       dialog.minimized = false;
       var k = dialog.zindex;
@@ -88,7 +91,7 @@ angular.module('root', [])
 		templateUrl: 'dialog.html',
 		link: function(scope, element, attrs) {
 		  
-		 //bring to top
+		 //bring dialog to top
 		 scope.zorder = function() {
 		    var k = scope.model.zindex;
 		    var l = scope.dialogs.length;

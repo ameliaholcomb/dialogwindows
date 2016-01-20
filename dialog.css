@@ -27,6 +27,16 @@ html, body{
   font-weight: bold;
 }
 
+.content {
+  position: absolute;
+  top: 26px; /* under the minimize bar */
+  right: 10px;
+  bottom: 10px; /* above the resize area */
+  left: 10px;
+  overflow: auto;
+  border: dashed gray 1px;
+}
+
 .drag {
   height:10px;
   width: 10px;
@@ -38,14 +48,4 @@ html, body{
 
 .drag:hover {
   cursor: nwse-resize;
-}
-
-.content {
-  position: absolute;
-  top: 26px; /* under the minimize bar */
-  right: 10px;
-  bottom: 10px; /* above the resize area */
-  left: 10px;
-  overflow: auto;
-  border: dashed gray 1px;
 }

@@ -9,18 +9,28 @@
 	                                   'left':model.maximized == true ? '0px' : model.left+'px', 
 	                                   'z-index': model.zindex}" 
 	                        ng-mousedown='zorder()'>
+
+	        <!-- child element 0: top bar -->
 	        <span class='topbar'> 
 	            <button class='close' 
 	                    ng-show='model.closeable==true'
 	                    ng-click="close()" > x </button>
 	            <button class='minimize' ng-click="minimize()"> _ </button>
-	            <button class='maximize' ng-click="maximize()"> + </button>
+	            <button class='maximize' 
+	            		ng-show='globals.maxbool==false || model.maximized==true'
+	            		ng-click="maximize()"> + </button>
 	            <span class ='header'> {{model.header}} </span>
 	        </span>
+
+	        <!-- child element 1: content -->
 	        <div class='content'>
 	          <ng-include src=model.template></ng-include>
 	        </div>
-	        <div class='drag'></div>
+
+	        <!-- child element 2: drag to resize -->
+	        <div class='drag'>
+	        </div>
+
 	    </div>
 	</body>
 </html>
